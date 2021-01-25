@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import { moviesData } from "./components/MoviesData";
+import Main from "./components/Main";
+
+import Header from "./components/Header/Header";
+
+import "./App.css";
 
 function App() {
+  const [movies, setMovies] = useState(moviesData);
+  const [myInput, setMyInput] = useState("");
+  const [myRate, setMyRate] = useState(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setMyInput={setMyInput} myRate={myRate} setMyRate={setMyRate} />
+      <Main
+        movies={movies.filter(
+          (el) =>
+            el.name.toLowerCase().includes(myInput.toLowerCase().trim()) &&
+            el.rating >= myRate
+        )}
+      />
     </div>
   );
 }
