@@ -2,11 +2,11 @@ import React from 'react'
 import AddMovie from './AddMovie/AddMovie';
 import MoviesList from "./MoviesList";
 
-const Main = ({movies}) => {
+const Main = ({movies, AddNewMovie}) => {
     return (
         <div>
             <MoviesList movies={movies}/>
-            <AddMovie />
+            <AddMovie AddNewMovie={AddNewMovie} />
         </div>
     )
 }

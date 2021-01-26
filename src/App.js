@@ -11,6 +11,9 @@ function App() {
   const [movies, setMovies] = useState(moviesData);
   const [myInput, setMyInput] = useState("");
   const [myRate, setMyRate] = useState(0);
+ 
+  const AddNewMovie=(x)=>{setMovies([...movies, x])}
+
   return (
     <div className="App">
       <Header setMyInput={setMyInput} myRate={myRate} setMyRate={setMyRate} />
@@ -20,6 +23,7 @@ function App() {
             el.name.toLowerCase().includes(myInput.toLowerCase().trim()) &&
             el.rating >= myRate
         )}
+        AddNewMovie={AddNewMovie}
       />
     </div>
   );
